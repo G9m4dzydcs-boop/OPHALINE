@@ -9,6 +9,13 @@
 <body>
 
 <header class="hero" id="inicio">
+  <!-- Botón de menú hamburguesa -->
+  <button class="menu-toggle" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
   <div class="hero-contenido">
     <h1>OPHALINE</h1>
     <p>Proyecto escolar enfocado en la elaboración de productos útiles para el cuidado personal y la salud.</p>
@@ -17,13 +24,13 @@
   </div>
 </header>
 
-<nav>
-<a href="#inicio">Inicio</a>
-<a href="#nosotros">Nosotros</a>
-<a href="#productos">Productos</a>
-<a href="#ventajas">Ventajas</a>
-<a href="#faq">Preguntas</a>
-<a href="#contacto">Contacto</a>
+<nav class="nav-menu" id="navMenu">
+<a href="#inicio" onclick="closeMenu()">Inicio</a>
+<a href="#bienvenida" onclick="closeMenu()">Nosotros</a>
+<a href="#productos" onclick="closeMenu()">Productos</a>
+<a href="#ventajas" onclick="closeMenu()">Ventajas</a>
+<a href="#faq" onclick="closeMenu()">Preguntas</a>
+<a href="#contacto" onclick="closeMenu()">Contacto</a>
 </nav>
 
 <section id="bienvenida">
@@ -157,6 +164,27 @@
 <h3>OPHALINE</h3>
 <p>Cuidado Personal • Salud • Higiene • Hidratación</p>
 </footer>
+
+<script>
+function toggleMenu() {
+  const navMenu = document.getElementById('navMenu');
+  navMenu.classList.toggle('active');
+}
+
+function closeMenu() {
+  const navMenu = document.getElementById('navMenu');
+  navMenu.classList.remove('active');
+}
+
+// Cerrar menú cuando se hace clic fuera
+document.addEventListener('click', function(event) {
+  const navMenu = document.getElementById('navMenu');
+  const menuToggle = document.querySelector('.menu-toggle');
+  if (!navMenu.contains(event.target) && !menuToggle.contains(event.target)) {
+    navMenu.classList.remove('active');
+  }
+});
+</script>
 
 </body>
 </html>
